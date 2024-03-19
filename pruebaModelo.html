@@ -48,17 +48,17 @@
         var lastMouseX = null;
         var lastMouseY = null;
 
-        document.addEventListener('mousedown', function(event) {
+        function onMouseDown(event) {
           mouseDown = true;
           lastMouseX = event.clientX;
           lastMouseY = event.clientY;
-        });
+        }
 
-        document.addEventListener('mouseup', function() {
+        function onMouseUp() {
           mouseDown = false;
-        });
+        }
 
-        document.addEventListener('mousemove', function(event) {
+        function onMouseMove(event) {
           if (!mouseDown) return;
 
           var deltaX = event.clientX - lastMouseX;
@@ -69,7 +69,26 @@
 
           lastMouseX = event.clientX;
           lastMouseY = event.clientY;
-        });
+        }
+
+        function onTouchStart(event) {
+          onMouseDown(event.touches[0]);
+        }
+
+        function onTouchMove(event) {
+          onMouseMove(event.touches[0]);
+        }
+
+        function onTouchEnd() {
+          onMouseUp();
+        }
+
+        document.addEventListener('mousedown', onMouseDown);
+        document.addEventListener('mouseup', onMouseUp);
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('touchstart', onTouchStart);
+        document.addEventListener('touchmove', onTouchMove);
+        document.addEventListener('touchend', onTouchEnd);
 
         model.traverse(function (node) {
           if (node.isMesh) {
