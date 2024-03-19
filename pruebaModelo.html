@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelo 3D con Three.js</title>
+  <style>
+    body { 
+      margin: 0;
+      background-color: #ffffff; /* Cambia el color de fondo a blanco */
+    }
+    canvas { 
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="modelo3D"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
+  <script>
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById("modelo3D").appendChild(renderer.domElement);
+
+    var ambientLight = new THREE.AmbientLight(0xffffff, 5);
+    scene.add(ambientLight);
+
+    var directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+    directionalLight.position.set(1, 1, 1);
+    scene.add(directionalLight);
+
+    var loader = new THREE.GLTFLoader();
+    loader.load(
+      'MODELOS/CAUCA2.glb', // Ruta del modelo GLB      
+      function (gltf) {
+        var scaleFactor = 2; // Por ejemplo, un factor de escala de 2 duplicará el tamaño del modelo
+        
+        gltf.scene.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
+        // Hacer que el modelo sea interactivo para raycasting
+        gltf.scene.traverse(function (node) {
+          if (node.isMesh) {
+            node.userData.url = 'https://yefrivera.github.io/tourvirtual/'; // Define el enlace que se abrirá al hacer clic
+            node.material.transparent = true;
+            node.material.opacity = 1; // Hace que el modelo sea semi-transparente para visualizar mejor el efecto de interacción
+            node.onClick = function() {
+              if (node.userData.url) {
+                window.location.href = node.userData.url;
+              }
+            };
+          }
+        });
+
+        scene.add(gltf.scene);
+      },
+      undefined,
+      function (error) {
+        console.error(error);
+      }
+    );
+
+    camera.position.z = 5;
+
+    // Agregar un plano de fondo
+    var geometry = new THREE.PlaneGeometry(100, 100);
+    var material = new THREE.MeshBasicMaterial({ color: 0xaaaaaa, side: THREE.DoubleSide });
+    var plane = new THREE.Mesh(geometry, material);
+    plane.position.z = -10; // Coloca el plano detrás del modelo
+    scene.add(plane);
+
+    // Agregar controles de órbita
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // Movimiento suave de la cámara
+    controls.dampingFactor = 0.25; // Factor de amortiguación (mayor es más suave)
+
+    // Raycaster para la interacción con el modelo
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    function onMouseClick(event) {
+      // Calcula la posición del mouse en coordenadas normalizadas
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      // Actualiza el raycaster
+      raycaster.setFromCamera(mouse, camera);
+
+      // Intersección rayo-malla
+      var intersects = raycaster.intersectObjects(scene.children, true);
+
+      if (intersects.length > 0) {
+        // Redirigir al enlace asociado con el objeto intersectado
+        if (intersects[0].object.onClick) {
+          intersects[0].object.onClick();
+        }
+      }
+    }
+
+    window.addEventListener('click', onMouseClick, false);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update(); // Actualizar los controles en cada fotograma
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>
