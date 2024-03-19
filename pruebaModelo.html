@@ -17,7 +17,6 @@
 <body>
   <div id="modelo3D"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
   <script>
     var scene = new THREE.Scene();
@@ -37,21 +36,44 @@
     loader.load(
       'MODELOS/CAUCA2.glb', // Ruta del modelo GLB      
       function (gltf) {
-        var scaleFactor = 2; // Por ejemplo, un factor de escala de 2 duplicará el tamaño del modelo
+        var scaleFactor = 1; // Por ejemplo, un factor de escala de 2 duplicará el tamaño del modelo
         
         gltf.scene.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
-        // Hacer que el modelo sea interactivo para raycasting
-        gltf.scene.traverse(function (node) {
+        // Hacer que el modelo sea interactivo para la rotación
+        var model = gltf.scene;
+        model.rotation.y = Math.PI / 2; // Rotación inicial del modelo (opcional)
+
+        var mouseDown = false;
+        var lastMouseX = null;
+        var lastMouseY = null;
+
+        document.addEventListener('mousedown', function(event) {
+          mouseDown = true;
+          lastMouseX = event.clientX;
+          lastMouseY = event.clientY;
+        });
+
+        document.addEventListener('mouseup', function() {
+          mouseDown = false;
+        });
+
+        document.addEventListener('mousemove', function(event) {
+          if (!mouseDown) return;
+
+          var deltaX = event.clientX - lastMouseX;
+          var deltaY = event.clientY - lastMouseY;
+
+          model.rotation.y += deltaX * 0.01; // Ajusta la velocidad de rotación según sea necesario
+          model.rotation.x += deltaY * 0.01; // Ajusta la velocidad de rotación según sea necesario
+
+          lastMouseX = event.clientX;
+          lastMouseY = event.clientY;
+        });
+
+        model.traverse(function (node) {
           if (node.isMesh) {
             node.userData.url = 'https://yefrivera.github.io/tourvirtual/'; // Define el enlace que se abrirá al hacer clic
-            node.material.transparent = true;
-            node.material.opacity = 1; // Hace que el modelo sea semi-transparente para visualizar mejor el efecto de interacción
-            node.onClick = function() {
-              if (node.userData.url) {
-                window.location.href = node.userData.url;
-              }
-            };
           }
         });
 
@@ -65,46 +87,21 @@
 
     camera.position.z = 5;
 
-    // Agregar un plano de fondo
-    var geometry = new THREE.PlaneGeometry(100, 100);
-    var material = new THREE.MeshBasicMaterial({ color: 0xaaaaaa, side: THREE.DoubleSide });
-    var plane = new THREE.Mesh(geometry, material);
-    plane.position.z = -10; // Coloca el plano detrás del modelo
-    scene.add(plane);
-
-    // Agregar controles de órbita
-    var controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; // Movimiento suave de la cámara
-    controls.dampingFactor = 0.25; // Factor de amortiguación (mayor es más suave)
-
-    // Raycaster para la interacción con el modelo
-    var raycaster = new THREE.Raycaster();
-    var mouse = new THREE.Vector2();
-
     function onMouseClick(event) {
-      // Calcula la posición del mouse en coordenadas normalizadas
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-      // Actualiza el raycaster
+      var mouse = new THREE.Vector2((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1);
+      var raycaster = new THREE.Raycaster();
       raycaster.setFromCamera(mouse, camera);
 
-      // Intersección rayo-malla
       var intersects = raycaster.intersectObjects(scene.children, true);
-
-      if (intersects.length > 0) {
-        // Redirigir al enlace asociado con el objeto intersectado
-        if (intersects[0].object.onClick) {
-          intersects[0].object.onClick();
-        }
+      if (intersects.length > 0 && intersects[0].object.userData.url) {
+        window.location.href = intersects[0].object.userData.url;
       }
     }
 
-    window.addEventListener('click', onMouseClick, false);
+    document.addEventListener('click', onMouseClick, false);
 
     function animate() {
       requestAnimationFrame(animate);
-      controls.update(); // Actualizar los controles en cada fotograma
       renderer.render(scene, camera);
     }
     animate();
