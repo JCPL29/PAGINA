@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba Pagina</title>
+    <title>Curso CCS</title>
     <link rel="shortcut icon" href="./ESTILOS/IMAGES/icono.png" type="image/x-icon"> <!--Imagen del icono de la pagina-->
     <link rel="stylesheet" href="./ESTILOS/CSS/normalize.css"><!--normaliza para todos los navegadores-->
     <link rel="stylesheet" href="./ESTILOS/CSS/estilos.css"><!--Configura los estilos del css-->
@@ -11,25 +11,35 @@
 <body>
     
     <header class="hero">
-        <nav class="nav container"></nav><!--Crea un contenedor para las cosas-->
-        <div class="nav__logo">
-            <h2 class="nav__title">Curso css</h2>
-        </div>
+        <nav class="nav container">
+            <div class="nav__logo">
+                <h2 class="nav__title">VIAJES CAUCA</h2>
+            </div>
+<!------------------------Menu inicial------------------------------->
+            <ul class="nav__link nav__link--menu">
+                <li class="nav__items">
+                    <a href="#" class="nav__links">Inicio</a>
+                </li>
+                <li class="nav__items">
+                    <a href="#" class="nav__links">Tour virtual</a>
+                </li>
+                <li class="nav__items">
+                    <a href="#" class="nav__links">Reserva online</a>
+                </li>
 
-        <ul class="nav__link nav__link--menu">
-            <li class="nav__items">
-                <a href="#" class="nav__links">Inicio</a>
-            </li>
-            <li class="nav__items">
-                <a href="#" class="nav__links">Acerca de</a>
-            </li>
-            <li class="nav__items">
-                <a href="#" class="nav__links">Contacto</a>
-            </li>
-            <li class="nav__items">
-                <a href="#" class="nav__links">Blog</a>
-            </li>
-        </ul>
+                <img src="./ESTILOS/ICONS/close.svg" class="nav__close">
+            </ul>
+
+            <div class="nav__menu">
+                <img src="./ESTILOS/ICONS/menu.svg" class="nav__img">
+            </div>
+        </nav>
+        <section class="hero__container container">
+            <h1 class="hero__title">BIENVENIDOS AL CAUCA</h1>
+            <p class="hero__paragraph">Descubre la magia ancestral del Departamento del Cauca, un rincón encantador de Colombia donde la historia y la naturaleza se entrelazan en un tapiz vibrante de colores y experiencias. Déjate seducir por la hospitalidad de su gente, que te recibirán con los brazos abiertos.
+            <br>¡Ven y déjate enamorar por el Cauca!</p>    <!--El <br> para dar un punto aparte-->
+            <a href="#" class="cta">Conoce más!</a>
+        </section>
     </header>
 
 </body>

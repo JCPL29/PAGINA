@@ -1,5 +1,123 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-body{
+/*Propiedades a las que se puede acceder desde cualquier elemento (paddding es el espacio que rodea el contenido
+para estos casos, es como el espacio que otorga a los contenedores)*/
+:root { 
+    --padding-container: 100px 0;
+    --color-title: #001A49;
+}
+
+body {
     font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 90%; /*Ocupar el porcentaje deseado de la pagina*/
+    max-width: 1200px;  /*Ancho maximo*/
+    margin: 0 auto; /*0 para centrar verticalemnete y margin auto de ambos lados*/
+    overflow: hidden; /*Todo lo que salga de lo anterior se esconda*/
+    padding: var(--padding-container);
+}
+
+.hero {
+    width: 100%;    /*100% del navegador, para la imagen de fondo*/
+    height: 100vh;  /*100% de alto de la pantalla*/
+    min-height: 600px;  /*alto minimo*/
+    max-height: 800px;  /*alto maximo*/
+    position: relative; /*Para que el elemento se posicione abolutamente a este contendero*/
+    display: grid;  /*Para crear dos filas*/
+    grid-template-rows: 100px 1fr;
+    color: #fff;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../IMAGES/parque.JPEG'); /*Coloca la imagen de la figura con un negradado en negro*/
+    background-size: cover; /*Para adaptarse a la pagina*/
+    background-position: center -680px; /*Para mover la imagen que esta dentro del contenedor*/
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
+    z-index: -1;
+}
+
+
+/* Nav */
+
+.nav {
+    --padding-container: 0;
+    height: 100%;
+    display: flex;  /*para poner los elementos uno al lado del otro*/
+    align-items: center;    /*Para centrarlos elementos verticalmente*/
+}
+
+.nav__title{
+    font-weight: 300; /*Peso de fuente mas delgado*/
+}
+
+.nav__link{
+    margin-left: auto;  /*los elementos (opciones inicio, etc) se mueven a la derecha, debido a que se usa flex-box*/
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column; /*Coloca cada item como columna para que esten uno al lado del otro*/
+    grid-auto-columns: max-content; /*Cada columna ocupe el maximo contenido del contenedor*/
+    gap: 2em;   /*espaciado*/
+}
+
+.nav__items{
+    list-style: none;
+}
+
+.nav__links{
+    color: #fff;
+    text-decoration: none; /*Quita las lineas que estan debajo de cada link*/
+}
+
+.nav__menu{
+    margin-left: auto;
+    cursor: pointer;    /*Cada que pase el cursor se coloca la manito de selección*/
+    display: none;  /*Para que desaparezca a menos que sea en dispositivo movil*/
+}
+
+.nav__img{
+    display: block;
+    width: 30px;
+}
+
+.nav__close{
+    display: var(--show, none);
+}
+
+/*Hero container*/
+
+.hero__container{
+    max-width: 800px;   /*ancho maximo*/
+    --padding-container:0;
+    display: grid;
+    grid-auto-rows: max-content;    /*Para que las filas no ocupen más de lo que deberian*/
+    align-content: center;  /*que el contenido se alinee verticalmente*/
+    gap: 1em;   /*espaciado*/
+    padding-bottom: 100px;  /*Para que no se pegue al corte*/
+    text-align: center; /*los textos que contienen esten centrados*/
+}
+
+.hero__title{
+    font-size: 3rem;    /*tamaño de letra*/
+}
+
+.hero__paragraph{
+    margin-bottom: 20px;    /*margen entre texto y boton*/
+}
+
+.cta{
+    display: inline-block;
+    background-color: #2091F9;
+    text-decoration: none;
+    justify-self: center;   /*para que el color del boton se ajuste a la cantidad de texto y lo centre*/
+    color: #fff;
+    padding: 13px 20px; /*Tamaño del boton*/
+    border-radius: 30px;
 }
