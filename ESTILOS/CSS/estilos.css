@@ -9,6 +9,7 @@ para estos casos, es como el espacio que otorga a los contenedores)*/
 
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: #2b8a7b;  /*Fondo de la pagina en general*/
 }
 
 .container {
@@ -35,8 +36,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%;    /*Ocupe el 100% del ancho de la pantalla*/
+    height: 100%;   /*Ocupe el 100% del alto de la pantalla*/
     background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../IMAGES/parque.JPEG'); /*Coloca la imagen de la figura con un negradado en negro*/
     background-size: cover; /*Para adaptarse a la pagina*/
     background-position: center -680px; /*Para mover la imagen que esta dentro del contenedor*/
@@ -55,7 +56,7 @@ body {
 }
 
 .nav__title{
-    font-weight: 300; /*Peso de fuente mas delgado*/
+    font-weight: 600; /*Peso de fuente mas delgado*/
 }
 
 .nav__link{
