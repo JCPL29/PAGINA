@@ -19,7 +19,7 @@ body {
     overflow: hidden; /*Todo lo que salga de lo anterior se esconda*/
     padding: var(--padding-container);
 }
-
+/*----------------------------------Contenedor hero para pagina principal-------------------*/
 .hero {
     width: 100%;    /*100% del navegador, para la imagen de fondo*/
     height: 100vh;  /*100% de alto de la pantalla*/
@@ -92,7 +92,7 @@ body {
     display: var(--show, none);
 }
 
-/*Hero container*/
+/*--------------------------------Hero container pagina principal-------------------------------------*/
 
 .hero__container{
     max-width: 800px;   /*ancho maximo*/
@@ -101,7 +101,7 @@ body {
     grid-auto-rows: max-content;    /*Para que las filas no ocupen más de lo que deberian*/
     align-content: center;  /*que el contenido se alinee verticalmente*/
     gap: 1em;   /*espaciado*/
-    padding-bottom: 100px;  /*Para que no se pegue al corte*/
+    padding-bottom: 100px;  /*Para que no se pegue al corte (movimiento vertical dentro del contenedor)*/
     text-align: center; /*los textos que contienen esten centrados*/
 }
 
@@ -121,4 +121,92 @@ body {
     color: #fff;
     padding: 13px 20px; /*Tamaño del boton*/
     border-radius: 30px;
+}
+
+/*----------------------------------Contenedor hero para Tour virtual--------------------------------------*/
+.hero__Tour {
+    width: 100%;    /*100% del navegador, para la imagen de fondo*/
+    height: 100vh;  /*100% de alto de la pantalla*/
+    min-height: 600px;  /*alto minimo*/
+    max-height: 800px;  /*alto maximo*/
+    position: relative; /*Para que el elemento se posicione abolutamente a este contendero*/
+    display: grid;  /*Para crear dos filas*/
+    grid-template-rows: 100px 1fr;
+    color: #fff;
+}
+
+.hero__Tour::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;    /*Ocupe el 100% del ancho de la pantalla*/
+    height: 100%;   /*Ocupe el 100% del alto de la pantalla*/
+    background-size: cover; /*Para adaptarse a la pagina*/
+    background-position: center -680px; /*Para mover la imagen que esta dentro del contenedor*/
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
+    z-index: -1;
+}
+/*--------------------------------Hero container Tour virtual-------------------------------------*/
+
+.hero__container__Tour{
+    max-width: 800px;   /*ancho maximo*/
+    --padding-container:0;
+    display: grid;
+    grid-auto-rows: max-content;    /*Para que las filas no ocupen más de lo que deberian*/
+    align-content: flex-start;  /*que el contenido se alinee verticalmente*/
+    gap: 1em;   /*espaciado*/
+    padding-bottom: 100px;  /*Para que no se pegue al corte (movimiento vertical dentro del contenedor)*/
+    text-align: center; /*los textos que contienen esten centrados*/
+}
+
+.hero__title__Tour{
+    font-size: 3rem;    /*tamaño de letra*/
+}
+
+.hero__paragraph__Tour{
+    margin-bottom: 20px;    /*margen entre texto y boton*/
+}
+
+.btn__popayan{  
+    margin: auto;
+    cursor: pointer;
+    display: inline-block;
+    background-image: url(../IMAGES/puente.JPEG);
+    background-position: 3000px;
+    text-decoration: none;
+    justify-self: center;   /*para que el color del boton se ajuste a la cantidad de texto y lo centre*/
+    color: #fff;
+    padding: 20px 60px; /*Tamaño del boton*/
+    border-radius: 30px;
+    text-decoration-line: none;
+}
+.btn__purace{  
+    margin: auto;
+    cursor: pointer;
+    display: inline-block;
+    background-image: url(../IMAGES/iglesia.JPEG);
+    background-position: center;
+    text-decoration: none;
+    justify-self: center;   /*para que el color del boton se ajuste a la cantidad de texto y lo centre*/
+    color: #fff;
+    padding: 20px 60px; /*Tamaño del boton*/
+    border-radius: 30px;
+    text-decoration-line: none;
+}
+/*imagenes*/
+.imagen-container {
+    display: inline-block; /* Mostrar los contenedores de imagen en línea */
+    margin-right: 10px; /* Agregar margen entre las imágenes */
+    text-decoration: none
+}
+h3.popayan{
+    border-radius: 20px;
+    background-color: #fff;
+    color: black;
+}
+h3.purace{
+    border-radius: 20px;
+    background-color: #fff;
+    color: black;
 }
