@@ -200,6 +200,9 @@ body {
     margin-right: 10px; /* Agregar margen entre las imágenes */
     text-decoration: none
 }
+.puente{
+    background-image: url(../ESTILOS/IMAGES/puente.JPEG);
+}
 h3.popayan{
     border-radius: 20px;
     background-color: #fff;
