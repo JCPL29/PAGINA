@@ -9,7 +9,7 @@ para estos casos, es como el espacio que otorga a los contenedores)*/
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #0A2781;  /*Fondo de la pagina en general*/
+    background-color: #fff;  /*Fondo de la pagina en general*/
 }
 
 .container {
@@ -132,7 +132,7 @@ body {
     position: relative; /*Para que el elemento se posicione abolutamente a este contendero*/
     display: grid;  /*Para crear dos filas*/
     grid-template-rows: 100px 1fr;
-    color: #fff;
+    color: #0832A2;
 }
 
 .hero__Tour::before {
@@ -158,6 +158,7 @@ body {
     gap: 1em;   /*espaciado*/
     padding-bottom: 100px;  /*Para que no se pegue al corte (movimiento vertical dentro del contenedor)*/
     text-align: center; /*los textos que contienen esten centrados*/
+    color: #0832A2;
 }
 
 .hero__title__Tour{
@@ -212,4 +213,23 @@ h3.purace{
     border-radius: 20px;
     background-color: #fff;
     color: black;
+}
+
+/*---------------------------main----------------------------*/
+.description{
+    text-align: center;  
+    --padding-container:0;
+    color: #0832A2;
+    
+}
+.nav__links__tour{
+    color: #0832A2;
+    text-decoration: none; /*Quita las lineas que estan debajo de cada link*/
+}
+.info__destination{
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+.info__paragraph{
+    font-size: 17px;
 }
