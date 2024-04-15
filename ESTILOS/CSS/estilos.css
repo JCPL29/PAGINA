@@ -5,6 +5,7 @@ para estos casos, es como el espacio que otorga a los contenedores)*/
 :root { 
     --padding-container: 100px 0;
     --color-title: #001A49;
+    transition: all .3s;
 }
 
 body {
@@ -47,7 +48,6 @@ body {
 
 
 /* Nav */
-
 .nav {
     --padding-container: 0;
     height: 100%;
@@ -233,3 +233,55 @@ h3.purace{
 .info__paragraph{
     font-size: 17px;
 }
+/*--------------------------------Carrusel de fotos------------------------------------*/
+/*
+.carousel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    max-width: 900px;
+    max-height: 550px;
+    overflow: hidden;
+    position: relative;
+  }
+.carousel__container{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+}*/
+/*----------------------------------------final pagina----------------------------------------------*/
+.finalPage {
+    text-align: center; /* Para centrar los elementos horizontalmente */
+    font-size: 0.85rem;
+    background-color: #0832A2;
+    --padding-container:0;
+    color: #fff;
+}
+.desing__for{
+    margin-top: 40px;
+}
+.logos__container {
+    display: flex; /* Mostrar los logos en línea */
+    justify-content: center; /* Centrar los logos horizontalmente */
+    align-items: center; /* Centrar los logos verticalmente */
+    margin-bottom: 5px; /* Espacio entre los logos y el siguiente elemento */
+    width: 105%;
+    transform: scale(0.8);
+}
+.logos__container img {
+    margin: 0 10px; /* Espacio entre los logos */
+}
+.fusioni3{
+    transform: scale(0.6);
+}
+.fusion{
+    margin-bottom: -15px;
+}
+
