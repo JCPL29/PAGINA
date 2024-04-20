@@ -234,28 +234,12 @@ h3.purace{
     font-size: 17px;
 }
 /*--------------------------------Carrusel de fotos------------------------------------*/
-/*
-.carousel {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    max-width: 900px;
-    max-height: 550px;
-    overflow: hidden;
-    position: relative;
-  }
-.carousel__container{
+
+.caruosel__images iframe{
+    display: block;
     margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    display: -webkit-flex;
-    justify-content: center;
-    -webkit-justify-content: center;
-    align-items: center;
-    -webkit-align-items: center;
-}*/
+}
+
 /*----------------------------------------final pagina----------------------------------------------*/
 .finalPage {
     text-align: center; /* Para centrar los elementos horizontalmente */
