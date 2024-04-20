@@ -12,7 +12,34 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #fff;  /*Fondo de la pagina en general*/
 }
+/*-----------------------------boton whatsapp------------------------------------------------*/
+.btn__wsp{
+    position: fixed;/*Posicion fija en la pantalla*/
+    width: 50px;
+    height: 50px;
+    line-height: 66px;
+    bottom: 30px;
+    right: 30px;
+    background: #0df053;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
 
+.btn__wsp:hover{
+    text-decoration: none;
+    background: #fff;
+}
+.icon__whatsapp{
+    filter: invert(86%) sepia(78%) saturate(0%) hue-rotate(74deg) brightness(112%) contrast(100%);
+}
+.icon__whatsapp:hover{
+    filter: invert(85%) sepia(29%) saturate(5655%) hue-rotate(80deg) brightness(97%) contrast(98%);
+}
+
+/*----------------------------------contenedores en general------------------------------*/
 .container {
     width: 90%; /*Ocupar el porcentaje deseado de la pagina*/
     max-width: 1200px;  /*Ancho maximo*/
