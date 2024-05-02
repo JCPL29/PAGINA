@@ -68,7 +68,7 @@ body {
     height: 100%;   /*Ocupe el 100% del alto de la pantalla*/
     background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../IMAGES/parque.JPEG'); /*Coloca la imagen de la figura con un negradado en negro*/
     background-size: cover; /*Para adaptarse a la pagina*/
-    background-position: center -680px; /*Para mover la imagen que esta dentro del contenedor*/
+    background-position: center; /*Para mover la imagen que esta dentro del contenedor*/
     clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
     z-index: -1;
 }
