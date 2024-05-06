@@ -45,7 +45,7 @@ body {
 /*----------------------------------contenedores en general------------------------------*/
 .container {
     width: 90%; /*Ocupar el porcentaje deseado de la pagina*/
-    max-width: 1200px;  /*Ancho maximo*/
+    max-width: 1300px;  /*Ancho maximo*/
     margin: 0 auto; /*0 para centrar verticalemnete y margin auto de ambos lados*/
     overflow: hidden; /*Todo lo que salga de lo anterior se esconda*/
     padding: var(--padding-container);
@@ -130,7 +130,7 @@ body {
     display: grid;
     grid-auto-rows: max-content;    /*Para que las filas no ocupen más de lo que deberian*/
     align-content: center;  /*que el contenido se alinee verticalmente*/
-    gap: 1em;   /*espaciado*/
+    gap: 1rem;   /*espaciado*/
     padding-bottom: 100px;  /*Para que no se pegue al corte (movimiento vertical dentro del contenedor)*/
     text-align: center; /*los textos que contienen esten centrados*/
 }
@@ -145,7 +145,7 @@ body {
 
 .cta{
     display: inline-block;
-    background-color: #2091F9;
+    background-color: #0832A2;
     text-decoration: none;
     justify-self: center;   /*para que el color del boton se ajuste a la cantidad de texto y lo centre*/
     color: #fff;
@@ -162,7 +162,7 @@ body {
     position: relative; /*Para que el elemento se posicione abolutamente a este contendero*/
     display: grid;  /*Para crear dos filas*/
     grid-template-rows: 100px 1fr;
-    color: #0832A2;
+    color: #fff;
 }
 
 .hero__Tour::before {
@@ -172,10 +172,12 @@ body {
     left: 0;
     width: 100%;    /*Ocupe el 100% del ancho de la pantalla*/
     height: 100%;   /*Ocupe el 100% del alto de la pantalla*/
+    background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../IMAGES/iglesia.JPEG'); /*Coloca la imagen de la figura con un negradado en negro*/
     background-size: cover; /*Para adaptarse a la pagina*/
-    background-position: center -680px; /*Para mover la imagen que esta dentro del contenedor*/
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
+    background-position: center -1000px; /*Para mover la imagen que esta dentro del contenedor*/
+    clip-path: polygon(0 0, 100% 0%, 100% 66%, 0 66%);
     z-index: -1;
+    background-attachment: fixed;
 }
 /*--------------------------------Hero container Tour virtual-------------------------------------*/
 
@@ -188,7 +190,7 @@ body {
     gap: 1em;   /*espaciado*/
     padding-bottom: 100px;  /*Para que no se pegue al corte (movimiento vertical dentro del contenedor)*/
     text-align: center; /*los textos que contienen esten centrados*/
-    color: #0832A2;
+    color: #fff;
 }
 
 .hero__title__Tour{
@@ -199,6 +201,62 @@ body {
     margin-bottom: 20px;    /*margen entre texto y boton*/
 }
 
+/* ---------------------------cards tour virtual--------------------------------------- */
+.cards{
+    display: flex;
+    justify-content: center;
+    margin-bottom: -3rem;
+}
+.card a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.25rem;
+}
+.card{
+    display: flex;
+    width: 210px;
+    height: 254px;
+    width: 850px;
+    gap: 10px;
+    place-items: center;
+}
+.card div{
+    cursor: pointer;
+    display: flex;
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+    transition: all .5s;
+    border: 2px solid #000000;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    filter: brightness(70%);
+}
+.card div:hover{
+    flex: 5;
+    height: 374px;
+    filter: brightness(100%);
+}
+.img1, .img2, .img3, .img4{
+    background-size: cover;
+    background-position: center;
+}
+.img1{
+    background-image: url(../IMAGES/popayan.JPEG);
+}
+.img2{
+    background-image: url(../IMAGES/silvia.jpg);
+}
+.img3{
+    background-image: url(../IMAGES/purace.jpg);
+}
+.img4{
+    background-image: url(../IMAGES/tierradentro.png);
+}
+
+
+/*----------------------------------------- Fin cards tour virtual--------------------------------------------- */
 .btn__popayan{  
     margin: auto;
     cursor: pointer;
@@ -253,7 +311,7 @@ h3.purace{
     
 }
 .nav__links__tour{
-    color: #0832A2;
+    color: #fff;
     text-decoration: none; /*Quita las lineas que estan debajo de cada link*/
 }
 .info__destination{
