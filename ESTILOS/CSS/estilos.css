@@ -143,15 +143,6 @@ body {
     margin-bottom: 20px;    /*margen entre texto y boton*/
 }
 
-.cta{
-    display: inline-block;
-    background-color: #0832A2;
-    text-decoration: none;
-    justify-self: center;   /*para que el color del boton se ajuste a la cantidad de texto y lo centre*/
-    color: #fff;
-    padding: 13px 20px; /*Tamaño del boton*/
-    border-radius: 30px;
-}
 
 /*----------------------------------Contenedor hero para Tour virtual--------------------------------------*/
 .hero__Tour {
