@@ -504,12 +504,19 @@ h3.purace{
 .finalPage {
     text-align: center; /* Para centrar los elementos horizontalmente */
     font-size: 0.85rem;
-    background-color: #0832A2;
+    background: url(../ICONS/wave.svg) no-repeat center center;
+    background-size: cover;
+    /* background-color: #0832A2; */
     --padding-container:0;
     color: #fff;
 }
+
+.container__final{
+    transform: scale(0.9);
+}
+
 .desing__for{
-    margin-top: 40px;
+    margin-top: 140px;
 }
 .logos__container {
     display: flex; /* Mostrar los logos en línea */
@@ -526,6 +533,41 @@ h3.purace{
     transform: scale(0.6);
 }
 .fusion{
-    margin-bottom: -15px;
+    margin-bottom: -30px;
+}
+/* Final pagina tour virtual */
+.final_tour {
+    text-align: center; /* Para centrar los elementos horizontalmente */
+    font-size: 0.85rem;
+    background: url(../ICONS/wave.svg) no-repeat center center;
+    background-size: cover;
+    /* background-color: #0832A2; */
+    --padding-container:0;
+    color: #fff;
+}
+
+.container__final{
+    transform: scale(0.9);
+}
+
+.desing__for{
+    margin-top: 140px;
+}
+.logos__container {
+    display: flex; /* Mostrar los logos en línea */
+    justify-content: center; /* Centrar los logos horizontalmente */
+    align-items: center; /* Centrar los logos verticalmente */
+    margin-bottom: 5px; /* Espacio entre los logos y el siguiente elemento */
+    width: 105%;
+    transform: scale(0.8);
+}
+.logos__container img {
+    margin: 0 10px; /* Espacio entre los logos */
+}
+.fusioni3{
+    transform: scale(0.6);
+}
+.fusion{
+    margin-bottom: -30px;
 }
 
